@@ -1,4 +1,4 @@
-# My Blog Site
+# Siran's Kitchen
 
 Application for your personal food recipe! (this website is for study purposes only)
 
