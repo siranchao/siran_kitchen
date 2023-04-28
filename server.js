@@ -102,7 +102,24 @@ app.get("/", (req, res) => {
 })
 
 app.get("/about", (req, res) => {
-    res.render("about", { data: null })
+    blogService.getRandomPost()
+        .then(data => {
+            if (data.length === 0) {
+                res.render("about", { data: null })
+            }
+            else {
+                const val = data.map(post => {
+                    return {
+                        id: post._id,
+                        title: post.title,
+                    }
+                })
+                res.render("about", { data: val })
+            }
+        })
+        .catch(err => {
+            res.render("about", { message: err })
+        })
 })
 
 app.get("/login", (req, res) => {
@@ -164,6 +181,7 @@ app.get("/blog", async (req, res) => {
             return {
                 id: item._id,
                 title: item.title,
+                ingredients: item.ingredients,
                 body: item.body,
                 image: item.featureImage,
                 postDate: item.postDate,
@@ -204,6 +222,7 @@ app.get("/blog/:id", async (req, res) => {
             return {
                 id: item._id,
                 title: item.title,
+                ingredients: item.ingredients,
                 body: item.body,
                 image: item.featureImage,
                 postDate: item.postDate,
@@ -227,6 +246,7 @@ app.get("/blog/:id", async (req, res) => {
             return {
                 id: item._id,
                 title: item.title,
+                ingredients: item.ingredients,
                 body: item.body,
                 image: item.featureImage,
                 postDate: item.postDate,
@@ -260,6 +280,7 @@ app.get("/posts", ensureLogin, (req, res) => {
                     return {
                         id: item._id,
                         title: item.title,
+                        ingredients: item.ingredients,
                         body: item.body,
                         postDate: item.postDate,
                         image: item.image,
@@ -286,6 +307,7 @@ app.get("/posts", ensureLogin, (req, res) => {
                     return {
                         id: item._id,
                         title: item.title,
+                        ingredients: item.ingredients,
                         body: item.body,
                         postDate: item.postDate,
                         image: item.image,
@@ -312,6 +334,7 @@ app.get("/posts", ensureLogin, (req, res) => {
                     return {
                         id: item._id,
                         title: item.title,
+                        ingredients: item.ingredients,
                         body: item.body,
                         postDate: item.postDate,
                         image: item.image,

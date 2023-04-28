@@ -3,12 +3,16 @@ const Schema = mongoose.Schema;
 
 //config mongoose models
 const PostSchema = new Schema({
-    body: {
+    title: {
+        type: String,
+        required: true
+    },
+    ingredients: {
         type: Array,
         required: true
     },
-    title: {
-        type: String,
+    body: {
+        type: Array,
         required: true
     },
     postDate: Date,
@@ -50,6 +54,18 @@ module.exports.getPublishedPosts = () => {
             .catch(err => {
                 reject("no results returned")
             })
+    })
+}
+
+module.exports.getRandomPost = () => {
+    return new Promise((resolve, reject) => {
+        Post.aggregate([
+            { $sample: { size: 10 } }
+        ]).then(data => {
+            resolve(data);
+        }).catch(error => {
+            console.error(error);
+        });
     })
 }
 
@@ -122,8 +138,9 @@ module.exports.addPost = (newPost) => {
         }
 
         let post = new Post({
-            body: newPost.body.split("\n"),
             title: newPost.title,
+            ingredients: newPost.ingredients.split("\n"),
+            body: newPost.body.split("\n"),
             postDate: newPost.postDate,
             featureImage: newPost.featureImage,
             published: newPost.published === "on" ? true : false,

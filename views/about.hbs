@@ -1,7 +1,7 @@
 <div class="row">
   <section class="main col-md-9">
     <article>
-      <h2>About Siran's Kitchen</h2>
+      <h2>Welcome to Siran's Kitchen</h2>
       <br />
       <div>
         <img
@@ -9,47 +9,60 @@
           alt="banner-photo" class="banner" />
       </div>
       <br />
-      <p>
-        “Visual Studio Code is an open-source (free) streamlined code editor
-        with support for development operations like debugging, task running and
-        version control. It aims to provide just the tools a developer needs for
-        a quick code-build-debug cycle and leaves more complex workflows to
-        fuller featured IDEs”. Visual Studio Code also runs on Mac OS X, Linux
-        and Windows operating systems, which will provide the class with a
-        single unified environment to work in regardless of a student’s choice
-        of laptop or home computer.
+      <p class="about-text">
+        <strong>Welcome!</strong> to Siran's cooking website, here you can learn how to cook delicious meals from a
+        variety of recipes!
+        Whether you're a beginner in the kitchen or a seasoned chef, our website has something for everyone.
+      </p>
+
+      <p class="about-text">
+        The website offers a wide range of recipes, from classic comfort foods to more adventurous dishes. You'll find
+        step-by-step instructions to guide you through each recipe, making it easy to create delicious
+        meals in your own home. To view the full online recipes just simply click the <a href="/blog">Menu Tab</a> and
+        find something tasty!
+      </p>
+
+      <p class="about-text">
+        The application are designed to accommodate a variety of lifestyles and open for edit. We encourage people to
+        join us and contribute your own recipe. Just click <a href="/register">Sign up</a> for account registration.
+        Once you log in, you will be able
+        to upload your own recipe. Please remember to also upload a cover image and
+        select Category. If you can't find the precise category, you can view the <a href="/categories">Category
+          Page</a> and create a new category.
       </p>
       <br />
-      <p>
-        A modern web browser such as Google Chrome or Mozilla Firefox will be
-        used regularly throughout this course. Internet Explorer 11 / Edge will
-        work as well, as it supports a similar set of development tools, however
-        due to it’s lack of plugins / addons and cross-platform support it’s not
-        as highly recommended. All screenshots and development examples used
-        throughout this course have been taken in Google Chrome.
-      </p>
-      <br />
-      <p>
-        Back in 1996 the JavaScript language specification was taken to Ecma
-        (European Computer Manufacturers Association) International to develop a
-        formal standardized specification, which other browser vendors and
-        companies could implement and expand. This standardized JavaScript was
-        dubbed “ECMAScript” and specific vendor versions of the specification
-        were known as “dialects”, the most popular of which being “JavaScript”.
-        When we refer to “JavaScript” we’re really referring to a dialect of
-        ECMAScript that has been implemented in the engine / runtime environment
-        that is running our JavaScript formatted code. For example, this
-        includes JavaScript engines like SpiderMonkey in Firefox, v8 in Chrome,
-        or Chakra in Internet Explorer.
+
+      <p class="about-text">Whether you're looking to learn, expand your recipe repertoire, or simply find some
+        inspiration
+        for your next meal, our website is the perfect place to start. <a href="/register">Join us</a> today and
+        <strong>Let's Get Cooking!</strong>
       </p>
       <br />
     </article>
   </section>
   <aside class="col-md-3">
-    <h2>Coming Soon</h2>
-    <p>
-      The section is still under develop, new features will coming soon! Thank
-      you
-    </p>
+    <h3>Recommend Recipes</h3>
+    {{#if message}}
+    <p>{{message}}</p>
+    <br />
+    {{/if}}
+
+    {{#if data}}
+    <p>Don't know what to eat? Here are some random recipes for you!</p>
+    <br />
+    {{#each data}}
+    <ul class="list-group">
+      <a href="/blog/{{this.id}}" class="list-group-item">{{this.title}}</a>
+    </ul>
+    {{/each}}
+    <div>
+      <a href="/about" class="btn btn-outline-danger btn-sm"><span
+          class="glyphicon glyphicon-refresh"></span>&nbsp;&nbsp;Change</a>
+    </div>
+
+    {{else}}
+    <p>No results can be found</p>
+    {{/if}}
+
   </aside>
 </div>

@@ -36,6 +36,12 @@ body {
   margin: 0 auto;
 }
 
+#food-photo{
+  display: block;
+  width: 95%;
+  margin: 0 auto;
+}
+
 #video-embed{
   display: block;
   margin: 0 auto;
@@ -48,6 +54,11 @@ body {
   font-size: 1.2em;
 }
 
+.about-text{
+  padding: 5px;
+  font-size: 1.2em;
+}
+
 @media screen and (max-width: 768px) {
   #video{
     width: 95%;
@@ -55,6 +66,11 @@ body {
   }
 
   .main-text{
+    padding: 10px;
+    font-size: 1em;
+  }
+
+  .about-text{
     padding: 10px;
     font-size: 1em;
   }

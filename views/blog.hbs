@@ -5,27 +5,32 @@
       <h2>{{data.post.title}}</h2>
       <br />
       {{#if data.post.image}}
-      <img src={{data.post.image}} alt="feature Image" style="width:100%" />
+      <img src={{data.post.image}} alt="feature Image" id="food-photo" />
       {{else}}
       <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg" alt="no Image"
         style="width:60%" />
       {{/if}}
 
-      <br /><br />
+      <br />
+      <div class="main-text">
+        <h3>Ingredients:</h3>
+        {{#each data.post.ingredients}}
+        <ul>{{this}}</ul>
+        {{/each}}
+      </div>
+      <hr />
 
       <div class="main-text">
+        <h3>Cooking Instructions:</h3>
         {{#each data.post.body}}
         <p>{{this}}</p>
         {{/each}}
       </div>
 
-      <br /><br />
-
-      {{#if data.post.video}}
-      <br />
       <hr />
-      <h4>Video Instruction:</h4>
 
+      <h3>Video Instruction:</h3>
+      {{#if data.post.video}}
       <div>
         <iframe id="video-embed" width="560" height="315" src={{data.post.embeddedVideo}} title="YouTube video player"
           frameborder="0"
@@ -33,7 +38,9 @@
           allowfullscreen>
         </iframe>
       </div>
-
+      {{else}}
+      <br />
+      <p>This recipe has no relevant video available</p>
       {{/if}}
 
       <br />
