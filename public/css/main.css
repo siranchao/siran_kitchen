@@ -28,3 +28,41 @@ body {
 .container {
   padding: 5px;
 }
+
+.banner{
+  display: block;
+  padding: 1rem;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#video-embed{
+  display: block;
+  margin: 0 auto;
+  width: 90%;
+  height: 50%;
+}
+
+.main-text{
+  padding: 5px;
+  font-size: 1.2em;
+}
+
+@media screen and (max-width: 768px) {
+  #video{
+    width: 95%;
+    height: 40%;
+  }
+
+  .main-text{
+    padding: 10px;
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  #video{
+    width: 100%;
+    height: 30%;
+  }
+}

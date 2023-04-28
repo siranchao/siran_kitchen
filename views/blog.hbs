@@ -3,7 +3,7 @@
     {{#if data.post}}
     <article>
       <h2>{{data.post.title}}</h2>
-
+      <br />
       {{#if data.post.image}}
       <img src={{data.post.image}} alt="feature Image" style="width:100%" />
       {{else}}
@@ -12,10 +12,32 @@
       {{/if}}
 
       <br /><br />
-      {{#safeHTML data.post.body}}
-      {{data.post.body}}
-      {{/safeHTML}}
+
+      <div class="main-text">
+        {{#each data.post.body}}
+        <p>{{this}}</p>
+        {{/each}}
+      </div>
+
       <br /><br />
+
+      {{#if data.post.video}}
+      <br />
+      <hr />
+      <h4>Video Instruction:</h4>
+
+      <div>
+        <iframe id="video-embed" width="560" height="315" src={{data.post.embeddedVideo}} title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      {{/if}}
+
+      <br />
+      <hr />
       <strong>Category:</strong>
       {{data.post.category}}<br />
       <strong>Last Updated:</strong>
@@ -27,7 +49,8 @@
     <article>
       <div class="col-md-12 text-center">
         <h2>{{data.message}}</h2>
-        <p>Please try another Post / Category</p>
+        <h4>No Information available</h4>
+        <p>Please try another Recipe / Category</p>
       </div>
     </article>
     {{/unless}}
@@ -36,7 +59,7 @@
   <aside class="col-md-3">
     <br /><br />
     {{#if data.posts}}
-    <h4>Posts</h4>
+    <h4>Recipes</h4>
     {{#each data.posts}}
     <ul class="list-group">
       <a href="/blog/{{id}}" class="list-group-item">{{title}}</a>

@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 //config mongoose models
 const PostSchema = new Schema({
     body: {
-        type: String,
+        type: Array,
         required: true
     },
     title: {
@@ -14,7 +14,9 @@ const PostSchema = new Schema({
     postDate: Date,
     featureImage: String,
     published: Boolean,
-    category: String
+    category: String,
+    video: String,
+    embeddedVideo: String
 })
 
 const CategorySchema = new Schema({
@@ -120,12 +122,14 @@ module.exports.addPost = (newPost) => {
         }
 
         let post = new Post({
-            body: newPost.body,
+            body: newPost.body.split("\n"),
             title: newPost.title,
             postDate: newPost.postDate,
             featureImage: newPost.featureImage,
             published: newPost.published === "on" ? true : false,
             category: newPost.category,
+            video: newPost?.video,
+            embeddedVideo: newPost.video ? `https://www.youtube.com/embed/${newPost.video.split("watch?v=").pop()}` : null
         })
 
         post.save()

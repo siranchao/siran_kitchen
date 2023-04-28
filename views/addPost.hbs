@@ -1,14 +1,14 @@
 <div class="row">
   <div class="col-md-12">
-    <h2>Add Post</h2>
+    <h2>You can create an new recipe</h2>
     <br />
     <form method="post" action="/posts/add" enctype="multipart/form-data">
       <fieldset>
-        <legend>Post Content</legend>
+        <legend>Recipe Content</legend>
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
-              <label for="title">Title:</label>
+              <label for="title">Name:</label>
               <input class="form-control" id="title" name="title" type="text" />
             </div>
           </div>
@@ -16,7 +16,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
-              <label for="body">Body:</label>
+              <label for="body">Cooking Instruction:</label>
               <textarea class="form-control" id="body" name="body" rows="15"></textarea>
             </div>
           </div>
@@ -51,22 +51,33 @@
         </div>
       </fieldset>
 
-      <br />
+
+      <br /> <br />
 
       <fieldset>
-        <legend>Feature Image</legend>
+        <legend>Additional Information: </legend>
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
+              <label for="featureImage">Cover Image:</label>
               <input class="form-control" id="featureImage" name="featureImage" type="file" required />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="video">Video Url &#40;Optional&#41;:</label>
+              <input class="form-control" id="video" name="video" type="text"
+                placeholder="suggest using YouTube link" />
             </div>
           </div>
         </div>
       </fieldset>
 
-      <hr />
+      <br />
 
-      <input type="submit" class="btn btn-primary pull-right" value="Add Post" /><br /><br /><br />
+      <input type="submit" class="btn btn-primary pull-right" value="Add Recipe" /><br /><br /><br />
     </form>
   </div>
 </div>

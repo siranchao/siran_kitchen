@@ -5,7 +5,6 @@ const app = express()
 const env = require("dotenv")
 env.config()
 const hbs = require("express-handlebars")
-const path = require("path")
 const multer = require("multer")
 const upload = multer()
 const stripJs = require("strip-js")
@@ -99,7 +98,7 @@ app.use(express.urlencoded({ extended: true }))
 
 ////setting routes////
 app.get("/", (req, res) => {
-    res.redirect("/blog")
+    res.redirect("/about")
 })
 
 app.get("/about", (req, res) => {
@@ -170,6 +169,8 @@ app.get("/blog", async (req, res) => {
                 postDate: item.postDate,
                 category: item.category,
                 published: item.published,
+                video: item.video,
+                embeddedVideo: item.embeddedVideo
             }
         })
 
@@ -208,6 +209,8 @@ app.get("/blog/:id", async (req, res) => {
                 postDate: item.postDate,
                 category: item.category,
                 published: item.published,
+                video: item.video,
+                embeddedVideo: item.embeddedVideo
             }
         })
 
@@ -229,6 +232,8 @@ app.get("/blog/:id", async (req, res) => {
                 postDate: item.postDate,
                 category: item.category,
                 published: item.published,
+                video: item.video,
+                embeddedVideo: item.embeddedVideo
             }
         })
         viewData.post = val[0]
@@ -259,7 +264,9 @@ app.get("/posts", ensureLogin, (req, res) => {
                         postDate: item.postDate,
                         image: item.image,
                         published: item.published,
-                        category: item.category
+                        category: item.category,
+                        video: item.video,
+                        embeddedVideo: item.embeddedVideo
                     }
                 });
                 if (data.length == 0) {
@@ -283,7 +290,9 @@ app.get("/posts", ensureLogin, (req, res) => {
                         postDate: item.postDate,
                         image: item.image,
                         published: item.published,
-                        category: item.category
+                        category: item.category,
+                        video: item.video,
+                        embeddedVideo: item.embeddedVideo
                     }
                 });
                 if (data.length == 0) {
@@ -307,7 +316,9 @@ app.get("/posts", ensureLogin, (req, res) => {
                         postDate: item.postDate,
                         image: item.image,
                         published: item.published,
-                        category: item.category
+                        category: item.category,
+                        video: item.video,
+                        embeddedVideo: item.embeddedVideo
                     }
                 });
                 if (data === undefined) {
