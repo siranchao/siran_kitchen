@@ -2,8 +2,8 @@
 
 Application for your personal food recipe! (this website is for study purposes only)
 
-- URL:
-- Server hosted on:
+- URL: https://siran-kitchen.cyclic.app
+- Server hosted on: cyclic
 - Written by: JS, Handlebars, Bootstrap, Node, Express.js
 - Method: Server-side rendering
 
